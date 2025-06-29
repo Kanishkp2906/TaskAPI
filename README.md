@@ -1,6 +1,6 @@
-''' FastAPI Project'''
+''' 
+FastAPI Project
 
-'''
 1. User registration and login.
 2. User authentication wiht JWT.
 3. Task Creation, View, Updation and Deletion.
