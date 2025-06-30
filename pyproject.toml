@@ -7,7 +7,6 @@ requires-python = ">=3.13"
 dependencies = [
     "dotenv>=0.9.9",
     "fastapi[all]>=0.115.13",
-    "middleware>=1.2.3",
     "passlib[argon2]>=1.7.4",
     "pydantic[email]>=2.11.7",
     "python-jose[cryptography]>=3.5.0",

@@ -394,12 +394,6 @@ wheels = [
 ]
 
 [[package]]
-name = "middleware"
-version = "1.2.3"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/f7/a4/3cdc5609be79de5a837873d4f8e5bcefd0ae17233f57aac70f10d885daef/middleware-1.2.3.tar.gz", hash = "sha256:e5370d5781c440637cb87be4964fc5cb9cec7d4c9a5bb6a7bf0bbae326639c5c", size = 4211, upload-time = "2017-07-18T01:55:41.873Z" }
-
-[[package]]
 name = "orjson"
 version = "3.10.18"
 source = { registry = "https://pypi.org/simple" }
@@ -707,7 +701,6 @@ source = { virtual = "." }
 dependencies = [
     { name = "dotenv" },
     { name = "fastapi", extra = ["all"] },
-    { name = "middleware" },
     { name = "passlib", extra = ["argon2"] },
     { name = "pydantic", extra = ["email"] },
     { name = "python-jose", extra = ["cryptography"] },
@@ -721,7 +714,6 @@ dependencies = [
 requires-dist = [
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "fastapi", extras = ["all"], specifier = ">=0.115.13" },
-    { name = "middleware", specifier = ">=1.2.3" },
     { name = "passlib", extras = ["argon2"], specifier = ">=1.7.4" },
     { name = "pydantic", extras = ["email"], specifier = ">=2.11.7" },
     { name = "python-jose", extras = ["cryptography"], specifier = ">=3.5.0" },
