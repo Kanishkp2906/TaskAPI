@@ -1,10 +1,11 @@
 from sqlalchemy.orm.session import Session
 from fastapi.security import OAuth2PasswordRequestForm
-from fastapi import APIRouter, HTTPException, Depends
-from schemas.users import UserCreate, UserResponse, UserUpdate, UserTaskResponse
+from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
+from schemas.users import UserCreate, UserResponse, UserUpdate
 from auth import hash_password, verify_password, get_current_user, create_access_token
 from database import get_db
-from models import Users, Tasks
+from models import Users
+from utils.notification import send_notification
 
 router = APIRouter(tags=['User Sign Up'])
 
@@ -91,3 +92,8 @@ def user_update(
     db.refresh(db_user)
 
     return db_user
+
+@router.post('/notify')
+def notify(email: str, backgorundTask: BackgroundTasks):
+    backgorundTask.add_task(send_notification, email)
+    return {'message': 'You will receive an email.'}
