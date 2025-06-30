@@ -19,19 +19,18 @@ class RedisRateLimiter(BaseHTTPMiddleware):
 
         if auth_header and auth_header.startswith('Bearer '):
             token = auth_header.split(' ')[1]
-
-        try:
-            payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-            user_id = payload.get('sub', 'unknown')
-        except JWTError:
-            user_id = 'Invalid Token!'
+            try:
+                payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+                user_id = payload.get('sub', 'unknown')
+            except JWTError:
+                user_id = 'Invalid Token!'
 
         redis_key = f'ratelimiting: {user_id}'
         request_count = redis_client.get(redis_key)
 
         if request_count is None:
             redis_client.set(redis_key, 1, ex=self.window)
-        elif request_count < self.limit:
+        elif int(request_count) < self.limit:
             redis_client.incr(redis_key)
         else:
             ttl = redis_client.ttl(redis_key)

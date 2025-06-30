@@ -9,7 +9,7 @@ from middleware.cors import add_cors_middleware
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(title='TaskAPI',lifespan=lifespan)
 
 add_cors_middleware(app)
 
