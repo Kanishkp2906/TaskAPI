@@ -1,0 +1,7 @@
+.env
+.venv
+.gitignore
+.python-version
+.log
+.md
+.db
