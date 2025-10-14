@@ -93,6 +93,7 @@ def user_update(
 
     return db_user
 
+#Notify user with a message.
 @router.post('/notify')
 def notify(email: str, backgorundTask: BackgroundTasks):
     backgorundTask.add_task(send_notification, email)
